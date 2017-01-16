@@ -1,0 +1,173 @@
+({:db/index              true,
+  :db/valueType          :db.type/boolean,
+  :db/noHistory          false,
+  :db/isComponent        false,
+  :db.install/_attribute :db.part/db,
+  :db/fulltext           false,
+  :db/cardinality        :db.cardinality/one,
+  :db/doc                "Is project on Clojars?",
+  :db/id                 #db/id[:db.part/db],
+  :db/ident              :project/onClojars}
+
+  {:db/index              true,
+   :db/valueType          :db.type/string,
+   :db/noHistory          false,
+   :db/isComponent        false,
+   :db.install/_attribute :db.part/db,
+   :db/fulltext           false,
+   :db/cardinality        :db.cardinality/one,
+   :db/doc                "Project version", :db/id #db/id[:db.part/db],
+   :db/ident              :project/version}
+
+  {:db/index              true,
+   :db/valueType          :db.type/string,
+   :db/noHistory          false,
+   :db/isComponent        false,
+   :db.install/_attribute :db.part/db,
+   :db/fulltext           false,
+   :db/cardinality        :db.cardinality/one,
+   :db/doc                "Project name",
+   :db/id                 #db/id[:db.part/db],
+   :db/ident              :project/name}
+
+  {:db/index              true,
+   :db/valueType          :db.type/string,
+   :db/noHistory          false,
+   :db/isComponent        false,
+   :db.install/_attribute :db.part/db,
+   :db/fulltext           false,
+   :db/cardinality        :db.cardinality/one,
+   :db/doc                "Maven artifact id",
+   :db/id                 #db/id[:db.part/db],
+   :db/ident              :project/artifact-id}
+
+  {:db/index              true,
+   :db/valueType          :db.type/string,
+   :db/noHistory          false,
+   :db/isComponent        false,
+   :db.install/_attribute :db.part/db,
+   :db/fulltext           false,
+   :db/cardinality        :db.cardinality/one,
+   :db/doc                "Maven group id",
+   :db/id                 #db/id[:db.part/db],
+   :db/ident              :project/group-id}
+
+  {:db/index              true,
+   :db/valueType          :db.type/ref,
+   :db/noHistory          false,
+   :db/isComponent        false,
+   :db.install/_attribute :db.part/db,
+   :db/fulltext           false,
+   :db/cardinality        :db.cardinality/many,
+   :db/doc                "Project pom.xml declared depedencies",
+   :db/id                 #db/id[:db.part/db],
+   :db/ident              :project/dependsOn}
+
+  {:db/index              true,
+   :db/valueType          :db.type/ref,
+   :db/noHistory          false,
+   :db/isComponent        false,
+   :db.install/_attribute :db.part/db,
+   :db/fulltext           false,
+   :db/cardinality        :db.cardinality/many,
+   :db/doc                "Project files",
+   :db/id                 #db/id[:db.part/db],
+   :db/ident              :project/files}
+
+  {:db/index              true,
+   :db/valueType          :db.type/string,
+   :db/noHistory          false,
+   :db/isComponent        false,
+   :db.install/_attribute :db.part/db,
+   :db/fulltext           false,
+   :db/cardinality        :db.cardinality/one,
+   :db/doc                "File namespace",
+   :db/id                 #db/id[:db.part/db],
+   :db/ident              :file/namespace}
+
+  {:db/index              false,
+   :db/valueType          :db.type/boolean,
+   :db/noHistory          false,
+   :db/isComponent        false,
+   :db.install/_attribute :db.part/db,
+   :db/fulltext           false,
+   :db/cardinality        :db.cardinality/one,
+   :db/doc                "Is cljc?",
+   :db/id                 #db/id[:db.part/db],
+   :db/ident              :file/cljc}
+
+  {:db/index              true,
+   :db/valueType          :db.type/ref,
+   :db/noHistory          false,
+   :db/isComponent        false,
+   :db.install/_attribute :db.part/db,
+   :db/fulltext           false,
+   :db/cardinality        :db.cardinality/many,
+   :db/doc                "File's form expressions (slices)",
+   :db/id                 #db/id[:db.part/db],
+   :db/ident              :file/forms}
+
+  {:db/id                 #db/id[:db.part/db]
+   :db/ident              :slice/fid
+   :db/valueType          :db.type/string
+   :db/cardinality        :db.cardinality/one
+   :db/unique             :db.unique/identity
+   :db/doc                "A unique slice name (upsertable)"
+   :db.install/_attribute :db.part/db}
+
+  {:db/id                 #db/id[:db.part/db]
+   :db/ident              :slice/code
+   :db/valueType          :db.type/string
+   :db/cardinality        :db.cardinality/one
+   :db/doc                "A slice code"
+   :db.install/_attribute :db.part/db}
+
+  {:db/id                 #db/id[:db.part/db]
+   :db/ident              :slice/rawDefs
+   :db/valueType          :db.type/string
+   :db/cardinality        :db.cardinality/one
+   :db/doc                "Slice analyzer output"
+   :db.install/_attribute :db.part/db}
+
+  {:db/id                 #db/id[:db.part/db]
+   :db/ident              :slice/isPrivate
+   :db/valueType          :db.type/boolean
+   :db/cardinality        :db.cardinality/one
+   :db/doc                "Slice visibility"
+   :db.install/_attribute :db.part/db}
+
+  {:db/id                 #db/id[:db.part/db]
+   :db/ident              :slice/symbols
+   :db/valueType          :db.type/string
+   :db/cardinality        :db.cardinality/many
+   :db/doc                "Slice defined symbols"
+   :db.install/_attribute :db.part/db}
+
+  {:db/id                 #db/id[:db.part/db]
+   :db/ident              :slice/resolvedDeps
+   :db/valueType          :db.type/string
+   :db/cardinality        :db.cardinality/many
+   :db/doc                "Slice depended on symbols"
+   :db.install/_attribute :db.part/db}
+
+  {:db/id                 #db/id[:db.part/db]
+   :db/ident              :slice/missingDeps
+   :db/valueType          :db.type/string
+   :db/cardinality        :db.cardinality/many
+   :db/doc                "Slice defined symbols"
+   :db.install/_attribute :db.part/db}
+
+  {:db/id                 #db/id[:db.part/db]
+   :db/ident              :slice/macroDeps
+   :db/valueType          :db.type/string
+   :db/cardinality        :db.cardinality/many
+   :db/doc                "Slice macro deps"
+   :db.install/_attribute :db.part/db}
+
+  {:db/id                 #db/id[:db.part/db]
+   :db/ident              :slice/dependsOn
+   :db/valueType          :db.type/ref
+   :db/cardinality        :db.cardinality/many
+   :db/doc                "Slice dependencies"
+   :db.install/_attribute :db.part/db}
+  )
